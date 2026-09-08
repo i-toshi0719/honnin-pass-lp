@@ -5,7 +5,7 @@ export default function CTA() {
   return (
     <section id="cta" className="scroll-mt-28 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="rounded-3xl bg-gradient-to-br from-brand-soft to-white px-6 py-12 text-center ring-1 ring-brand/20 sm:px-12 sm:py-16">
+        <div className="rounded-3xl bg-gradient-to-br from-accent-soft to-white px-6 py-12 text-center ring-1 ring-accent/20 sm:px-12 sm:py-16">
           <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {cta.heading}
           </h2>

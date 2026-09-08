@@ -1,10 +1,15 @@
 @import "tailwindcss";
 
 @theme {
+  /* LINE 公式カラー。「LINEで試してみる」CTA ボタン専用。 */
   --color-brand: #06c755;
   --color-brand-dark: #04a544;
-  --color-brand-soft: #e9f9f0;
-  --color-ink: #12261c;
+
+  /* サイトの基調色。ロゴアイコン（ネイビー×ブルー）から抽出。 */
+  --color-navy: #0b2358;
+  --color-accent: #2e63be;
+  --color-accent-soft: #eaf2fb;
+  --color-ink: #0f172a;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Noto Sans JP", "Yu Gothic Medium", "Yu Gothic", Meiryo,

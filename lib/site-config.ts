@@ -13,14 +13,18 @@ export const CTA_URL = "https://line.me/R/ti/p/@703znfby";
 
 export const CTA_LABEL = "LINEで試してみる";
 
-/** アクセントカラー（Tailwind 側は app/globals.css の --color-brand と対応） */
+/** LINE 公式カラー。CTA ボタン専用（Tailwind 側は app/globals.css の --color-brand と対応） */
 export const BRAND_COLOR = "#06C755";
+
+/** サイトの基調色。ロゴアイコンから抽出（Tailwind 側は --color-navy / --color-accent と対応） */
+export const NAVY_COLOR = "#0B2358";
+export const ACCENT_COLOR = "#2E63BE";
 
 export const seo = {
   title: "ほんにんPASS｜イベント・店舗の本人確認をLINEでシンプルに",
   description:
     "ほんにんPASSは、イベントや店舗などで本人確認・年齢確認を行いたい運営者向けのサービスです。参加者はLINEから利用でき、専用アプリのインストールは不要です。",
-  /** 実ファイルが無くてもビルドは通る。差し替える場合は public/og.png を配置する。 */
+  /** public/og.png（1200x630、ネイビー背景にロゴを中央配置）。差し替える場合は同名で上書きする。 */
   ogImage: "/og.png",
 } as const;
 
@@ -81,30 +85,86 @@ export const about = {
   ],
 } as const;
 
+/** 使い方セクションで表示する実際の操作画面（public/screens/ 配下） */
+export type HowItWorksScreen = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
+export type HowItWorksStep = {
+  number: string;
+  title: string;
+  audience: string;
+  body: string;
+  screens: readonly HowItWorksScreen[];
+};
+
 export const howItWorks = {
   heading: "使い方",
-  description: "3つのステップで、事前の本人確認から当日の受付までをつなぎます。",
+  description:
+    "3つのステップで、事前の本人確認から当日の受付までをつなぎます。参加者も運営者も、操作はすべてLINEの中で完結します。",
   steps: [
     {
       number: "01",
-      title: "参加者が事前に本人確認",
+      title: "LINEで認証",
       audience: "参加者",
-      body: "参加者はLINEから本人確認を行います。専用アプリのインストールは必要ありません。",
+      body: "参加者は公式LINEのメニューから本人確認を始めます。専用アプリのインストールは不要で、確認は約1分で完了します。",
+      screens: [
+        {
+          src: "/screens/line-menu.png",
+          alt: "ほんにんPASS 公式LINEのリッチメニュー",
+          caption: "公式LINEのメニューから「本人/年齢確認」をタップ",
+        },
+        {
+          src: "/screens/verify.png",
+          alt: "本人確認の開始画面",
+          caption: "身分証と顔の確認。所要時間は約1分",
+        },
+      ],
     },
     {
       number: "02",
-      title: "本人確認済みのPASSを発行",
-      audience: "参加者",
-      body: "確認済みの状態を、PASSとして利用できるようになります。",
+      title: "PASS作成",
+      audience: "運営者",
+      body: "運営者は受付PASS名・利用シーン・年齢条件を入力するだけで受付PASSを発行できます。発行済みのPASSは一覧で管理できます。",
+      screens: [
+        {
+          src: "/screens/pass-create.png",
+          alt: "受付PASSを作成する画面",
+          caption: "必要な項目だけ入力して受付PASSを作成",
+        },
+        {
+          src: "/screens/pass-list.png",
+          alt: "受付PASSの一覧画面",
+          caption: "有効期限やスキャン履歴を一覧で確認",
+        },
+      ],
     },
     {
       number: "03",
-      title: "当日の受付でPASSを利用",
-      audience: "運営者",
-      body: "運営者はPASSを確認して、当日の受付をスムーズに進められます。",
+      title: "QR提示で受付",
+      audience: "参加者・運営者",
+      body: "参加者は本人確認済みのQRを提示し、運営者はカメラで読み取るだけ。当日の受付で身分証を出してもらう必要はありません。",
+      screens: [
+        {
+          src: "/screens/pass-qr.png",
+          alt: "ほんにんPASSのQRコード表示画面",
+          caption: "参加者は確認済みのQRを提示",
+        },
+        {
+          src: "/screens/qr-scan.png",
+          alt: "QRコードを読み取るカメラ画面",
+          caption: "運営者はカメラで読み取るだけで受付完了",
+        },
+      ],
     },
   ],
-} as const;
+} as const satisfies {
+  heading: string;
+  description: string;
+  steps: readonly HowItWorksStep[];
+};
 
 export const benefits = {
   heading: "ほんにんPASSでできること",

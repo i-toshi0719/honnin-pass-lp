@@ -11,7 +11,7 @@ export default function Benefits() {
           {benefits.description}
         </p>
 
-        <div className="mt-10 rounded-2xl border border-brand/20 bg-brand-soft p-6 sm:p-8">
+        <div className="mt-10 rounded-2xl border border-accent/20 bg-accent-soft p-6 sm:p-8">
           <p className="text-lg font-bold text-ink sm:text-xl">
             {benefits.highlight.title}
           </p>

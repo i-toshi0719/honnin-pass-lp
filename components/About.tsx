@@ -28,7 +28,7 @@ export default function About() {
                 key={point.label}
                 className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
               >
-                <dt className="w-32 shrink-0 text-sm font-bold text-brand-dark">
+                <dt className="w-32 shrink-0 text-sm font-bold text-accent">
                   {point.label}
                 </dt>
                 <dd className="text-base text-slate-700">{point.value}</dd>
