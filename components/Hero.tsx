@@ -10,11 +10,11 @@ export default function Hero() {
             イベント・店舗の運営者向け
           </p>
 
-          <h1 className="mt-6 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+          <h1 className="mt-6 text-balance text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
             {hero.concept}
           </h1>
 
-          <p className="mt-5 text-lg font-semibold text-slate-700 sm:text-xl">
+          <p className="mt-5 text-balance text-lg font-semibold text-slate-700 sm:text-xl">
             {hero.headline}
           </p>
 
