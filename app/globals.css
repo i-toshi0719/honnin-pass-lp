@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #06c755;
+  --color-brand-dark: #04a544;
+  --color-brand-soft: #e9f9f0;
+  --color-ink: #12261c;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Noto Sans JP", "Yu Gothic Medium", "Yu Gothic", Meiryo,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ダークモードは対応しない（配色が意図せず反転しないよう light に固定） */
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+}

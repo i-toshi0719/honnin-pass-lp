@@ -1,0 +1,42 @@
+# ほんにんPASS LP
+
+「ほんにんPASS」のマーケティングLP。Next.js App Router + TypeScript + Tailwind CSS で構成しています。
+
+## 開発
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # 本番ビルド
+npm run start   # ビルド結果をローカル起動
+npm run lint    # ESLint
+npx tsc --noEmit  # 型チェック
+```
+
+## 構成
+
+```
+app/
+  layout.tsx        メタデータ / JSON-LD / Header・Footer
+  page.tsx          LP本体（セクションを並べるだけ）
+  robots.ts         /robots.txt
+  sitemap.ts        /sitemap.xml
+  privacy|terms|contact/  準備中ページ
+components/         セクション単位のコンポーネント
+lib/site-config.ts  文言・導線・セクション本文の集約先
+public/llms.txt     LLM向けのサービス概要
+```
+
+## 文言や導線の変更
+
+原則 `lib/site-config.ts` のみを編集すれば足りるようにしています。CTAのリンク先は `CTA_URL`、SEO関連は `seo`、各セクションの本文は同名のオブジェクト（`hero` / `problem` / `about` / `howItWorks` / `benefits` / `useCases` / `cta`）にまとまっています。
+
+## 未対応・今後
+
+- 料金セクションは未実装。`lib/site-config.ts` の `pricingPlans` を埋めて `components/Pricing.tsx` を追加する想定。
+- OG画像は `/og.png` を参照しているだけで実ファイルは未配置。必要になったら `public/og.png` を置く。
+- `/privacy` `/terms` `/contact` は「準備中」のプレースホルダー。
+
+## デプロイ
+
+Vercel にそのままデプロイできます。独自ドメインを設定する場合は `lib/site-config.ts` の `SITE_URL` を差し替えてください。
