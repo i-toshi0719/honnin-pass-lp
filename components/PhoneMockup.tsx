@@ -12,7 +12,7 @@ type Props = {
 
 /**
  * CSS だけで組んだスマートフォン風のフレーム。
- * 端末のステータスバーの差異（iOS / Android）はノッチで覆って目立たなくしている。
+ * リデザイン済みの 9:16 グラフィックを、拡大クロップせずそのまま表示する。
  */
 export default function PhoneMockup({
   src,
@@ -23,14 +23,8 @@ export default function PhoneMockup({
 }: Props) {
   return (
     <div
-      className={`relative rounded-[2.4rem] bg-slate-900 p-2 shadow-2xl shadow-navy/25 ring-1 ring-slate-900/10 ${className}`}
+      className={`relative overflow-hidden rounded-[2.4rem] bg-white p-2 shadow-2xl shadow-navy/25 ring-1 ring-slate-900/10 ${className}`}
     >
-      {/* ノッチ */}
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-3.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-slate-900"
-      />
-      {/* 画面 */}
       <div className="relative aspect-[9/16] overflow-hidden rounded-[2rem] bg-white">
         <Image
           src={src}
@@ -38,14 +32,9 @@ export default function PhoneMockup({
           fill
           priority={priority}
           sizes={sizes}
-          className="object-cover object-top"
+          className="object-cover"
         />
       </div>
-      {/* ホームバー */}
-      <div
-        aria-hidden
-        className="absolute bottom-3.5 left-1/2 z-10 h-1 w-16 -translate-x-1/2 rounded-full bg-slate-900/60"
-      />
     </div>
   );
 }
