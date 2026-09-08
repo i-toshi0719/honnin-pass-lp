@@ -3,6 +3,7 @@ import Benefits from "@/components/Benefits";
 import CTA from "@/components/CTA";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
+import OrganizerLine from "@/components/OrganizerLine";
 import Problem from "@/components/Problem";
 import UseCases from "@/components/UseCases";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <About />
+      <OrganizerLine />
       <HowItWorks />
       <Benefits />
       <UseCases />
