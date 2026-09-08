@@ -6,13 +6,13 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-slate-100 bg-gradient-to-b from-accent-soft to-white">
       <h1 className="sr-only">
-        「ほんにんPASS」なら身分証の不安にさよなら。
+          「ほんにんPASS」で身分証の不安にさようなら。
       </h1>
 
       <div className="w-full">
         <Image
           src="/hero.png"
-          alt="撮影会の受付で、身分証の提出をためらう参加者と、確認をお願いするスタッフ。ほんにんPASSなら身分証の不安にさよなら。"
+            alt="撮影会の受付で、身分証の提出をためらう参加者と、確認をお願いするスタッフ。「ほんにんPASS」で身分証の不安にさようなら。"
           width={1280}
           height={720}
           priority
