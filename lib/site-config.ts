@@ -13,6 +13,9 @@ export const CTA_URL = "https://line.me/R/ti/p/@703znfby";
 
 export const CTA_LABEL = "LINEで無料で試す（期間限定）";
 
+/** ヘッダーの小さな CTA 専用。幅が足りないため短い文言にする。 */
+export const CTA_LABEL_HEADER = "LINEで試してみる";
+
 /** LINE 公式カラー。CTA ボタン専用（Tailwind 側は app/globals.css の --color-brand と対応） */
 export const BRAND_COLOR = "#06C755";
 

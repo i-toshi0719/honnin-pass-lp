@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CtaButton from "@/components/CtaButton";
-import { SITE_NAME, navItems } from "@/lib/site-config";
+import { CTA_LABEL_HEADER, SITE_NAME, navItems } from "@/lib/site-config";
 
 export default function Header() {
   return (
@@ -36,7 +36,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <CtaButton size="sm" className="shrink-0" />
+          <CtaButton label={CTA_LABEL_HEADER} size="sm" className="shrink-0" />
         </div>
 
         {/* モバイルはメニュー開閉を持たず、常時表示のリンク行にする（クライアントJS不要） */}
