@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* LINE 公式カラー。「LINEで試してみる」CTA ボタン専用。 */
+  /* LINE 公式カラー。「LINEで無料で試す（期間限定）」CTA ボタン専用。 */
   --color-brand: #06c755;
   --color-brand-dark: #04a544;
 

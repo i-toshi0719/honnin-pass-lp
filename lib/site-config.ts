@@ -11,7 +11,7 @@ export const SITE_URL = "https://honnin-pass-lp.vercel.app";
 /** 公式LINEの友だち追加URL。LP内のCTAはすべてこの定数を参照すること。 */
 export const CTA_URL = "https://line.me/R/ti/p/@703znfby";
 
-export const CTA_LABEL = "LINEで試してみる";
+export const CTA_LABEL = "LINEで無料で試す（期間限定）";
 
 /** LINE 公式カラー。CTA ボタン専用（Tailwind 側は app/globals.css の --color-brand と対応） */
 export const BRAND_COLOR = "#06C755";
@@ -207,15 +207,23 @@ export const useCases = {
   items: [
     {
       title: "撮影会",
-      body: "初対面の参加者を受け入れる撮影会で、事前の本人確認に。",
-    },
-    {
-      title: "個人サロン",
-      body: "初めて利用する顧客を受け入れる際の確認手段として。",
+      body: "個室での撮影など、対人トラブルを避けたい場面の事前確認に。",
     },
     {
       title: "シーシャ店舗",
       body: "年齢確認など、利用者の確認が必要な場面に。",
+    },
+    {
+      title: "個人サロン",
+      body: "個室で施術する場で、対人トラブルを避けやすくするための事前確認に。",
+    },
+    {
+      title: "ナイトワーカー",
+      body: "個人でお客様と会うなど、事前に相手の本人確認を済ませておきたい場面に。",
+    },
+    {
+      title: "クラブ",
+      body: "入場時の年齢確認をQR提示に置き換え、身分証忘れで入場をお断りせずに済む場面に。",
     },
     {
       title: "その他イベント",
