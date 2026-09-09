@@ -26,7 +26,7 @@ export const ACCENT_COLOR = "#2E63BE";
 export const seo = {
   title: "ほんにんPASS｜イベント・店舗の本人確認をLINEでシンプルに",
   description:
-    "ほんにんPASSは、イベントや店舗などで本人確認・年齢確認を行いたい運営者向けのサービスです。参加者はLINEから利用でき、専用アプリのインストールは不要です。",
+    "ほんにんPASSは、イベントや店舗などで本人確認・年齢確認を行いたい運営者向けのサービスです。参加者はLINEから利用でき、専用アプリのインストールは不要。身分証や顔写真は運営者にもほんにんPASSにも渡りません。",
   /** public/og.png（1200x630、ネイビー背景にロゴを中央配置）。差し替える場合は同名で上書きする。 */
   ogImage: "/og.png",
 } as const;
@@ -34,6 +34,7 @@ export const seo = {
 export const navItems = [
   { label: "ほんにんPASSとは", href: "/#about" },
   { label: "使い方", href: "/#how-it-works" },
+  { label: "個人情報の扱い", href: "/#personal-data" },
   { label: "利用シーン", href: "/#use-cases" },
 ] as const;
 
@@ -67,6 +68,10 @@ export const problem = {
       title: "専用アプリを入れてもらうのはハードルが高い",
       body: "参加者にインストールをお願いすると、それだけで離脱につながってしまいます。",
     },
+    {
+      title: "参加者に個人情報を渡すのをためらわれる",
+      body: "身分証を見せることやコピーを取られることに抵抗を感じる参加者もいます。運営側としても、預かった個人情報の管理まで抱えたくはありません。",
+    },
   ],
 } as const;
 
@@ -83,6 +88,7 @@ export const about = {
     { label: "参加者の準備", value: "LINEのみ・専用アプリ不要" },
     { label: "運営者の準備", value: "LINEのみ・ボタン一つで受付PASS作成" },
     { label: "当日の受付", value: "確認済みQRを見せるだけ" },
+    { label: "個人情報", value: "運営者にもほんにんPASSにも渡らない" },
   ],
 } as const;
 
@@ -173,6 +179,50 @@ export const howItWorks = {
   steps: readonly HowItWorksStep[];
 };
 
+export const privacyDesign = {
+  eyebrow: "PRIVACY",
+  heading: "個人情報は、あずかりません",
+  lead: "本人確認に使う身分証や顔写真は、世界的な本人確認サービス「Didit」の中だけで処理されます。運営者にも、ほんにんPASSにも渡りません。",
+  items: [
+    {
+      title: "運営者には渡りません",
+      body: "運営者が受け取るのは、本人確認が済んでいるか、年齢条件を満たしているか、受付PASSでいつスキャンされたかという記録だけです。氏名・住所・身分証の画像を見ることはできません。",
+    },
+    {
+      title: "ほんにんPASSにも保存しません",
+      body: "身分証の画像や顔写真をほんにんPASSのサーバーに保存することはありません。確認はDidit側で完結し、ほんにんPASSは確認結果だけを扱います。",
+    },
+    {
+      title: "それでも、いざという時は辿れます",
+      body: "本人確認の記録はDidit側に保管されます。裁判所や捜査機関から正式な法的請求があった場合には、Diditのポリシーに基づき開示の対象となります。",
+    },
+  ],
+  highlight: {
+    title: "ふだんは、誰にも見られない。いざという時には、正規の手続きで辿れる。",
+    body: "参加者は個人情報を運営者に渡さずに済み、運営者は個人情報を預からずに済みます。それでいて、匿名のまま何をしてもよい仕組みにはなっていません。",
+  },
+  note: "開示の可否や範囲は、各国の法制度とDiditのポリシー、データの保持期間によります。",
+  provider: {
+    label: "本人確認の基盤",
+    name: "Didit",
+    url: "https://didit.me/ja/",
+    /**
+     * public/didit-logo.svg は公式ブランドキット（https://didit.me/brand/）の
+     * 明るい背景用ファイルをそのまま配置したもの。
+     * ブランド規約でマークの再描画と色の変更が禁止されているため、加工しないこと。
+     * 周囲にはマーク高さ1つ分以上のクリアスペースを空ける。
+     */
+    logo: "/didit-logo.svg",
+    logoWidth: 491,
+    logoHeight: 170,
+    facts: [
+      "220以上の国と地域、14,000種類以上の身分証に対応する本人確認基盤です。",
+      "ISO/IEC 27001 と SOC 2 Type 2 の認証を取得しています。",
+      "スペインの金融当局（Tesoro Público、Banco de España、SEPBLAC、CNMV）から、対面での身分証確認と同等以上に安全であるとの評価を受けています。",
+    ],
+  },
+} as const;
+
 export const benefits = {
   heading: "ほんにんPASSでできること",
   description: "小規模な運営でも取り入れやすい形にしています。",
@@ -192,6 +242,10 @@ export const benefits = {
     {
       title: "LINEだから導入しやすい",
       body: "参加者に新しいアプリを入れてもらう必要がありません。運営者も申し込みやシステム導入の手続きなしで、公式LINEから始められます。",
+    },
+    {
+      title: "個人情報を預からずに済む",
+      body: "身分証の画像や顔写真は本人確認サービス側で処理されます。運営者が個人情報を預かることがないため、保管や漏えいの心配を抱えずに済みます。",
     },
     {
       title: "小規模な運営にも",
