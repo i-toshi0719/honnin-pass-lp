@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="w-full">
         <Image
           src="/hero.png"
-            alt="撮影会の受付で、身分証の提出をためらう参加者と、確認をお願いするスタッフ。「ほんにんPASS」でわずらわしい身分証にさようなら。"
+            alt="撮影会の受付で身分証の提出をためらう参加者と、確認をお願いするスタッフ。参加者はコピーされることへの不安を口にしている。「ほんにんPASS」でわずらわしい身分証にさようなら。"
           width={1280}
           height={720}
           priority
