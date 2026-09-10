@@ -29,11 +29,11 @@ public/llms.txt     LLM向けのサービス概要
 
 ## 文言や導線の変更
 
-原則 `lib/site-config.ts` のみを編集すれば足りるようにしています。CTAのリンク先は `CTA_URL`、SEO関連は `seo`、各セクションの本文は同名のオブジェクト（`hero` / `problem` / `about` / `howItWorks` / `benefits` / `useCases` / `cta`）にまとまっています。
+原則 `lib/site-config.ts` のみを編集すれば足りるようにしています。CTAのリンク先は `CTA_URL`、SEO関連は `seo`、各セクションの本文は同名のオブジェクト（`heroSteps` / `problem` / `howItWorks` / `privacyDesign` / `useCases` / `pricing` / `cta`）にまとまっています。アイコンは `lucide-react` から選び、同じファイル内で指定します。
 
 ## 未対応・今後
 
-- 料金セクションは未実装。`lib/site-config.ts` の `pricingPlans` を埋めて `components/Pricing.tsx` を追加する想定。
+- 料金は正式提供前のため「予定」の表現。確定したら `lib/site-config.ts` の `pricing` を更新する。
 - OG画像は `/og.png` を参照しているだけで実ファイルは未配置。必要になったら `public/og.png` を置く。
 - `/privacy` `/terms` `/contact` は「準備中」のプレースホルダー。
 

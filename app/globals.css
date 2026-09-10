@@ -16,6 +16,15 @@
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/*
+ * 日本語の見出し用。文字の途中で折り返さず、文言側に入れたゼロ幅スペース（\u200B）の位置で
+ * だけ改行する。どこにも改行位置がなく収まらない場合は overflow-wrap で溢れを防ぐ。
+ */
+@utility text-jp-wrap {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 /* ダークモードは対応しない（配色が意図せず反転しないよう light に固定） */
 html {
   color-scheme: light;
