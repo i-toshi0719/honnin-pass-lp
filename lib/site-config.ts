@@ -2,6 +2,9 @@
  * サイト全体の設定・コピー・セクション本文をここに集約する。
  * 文言や導線を変更したいときは、原則このファイルだけを編集すれば済むようにしている。
  * アイコンは lucide-react（https://lucide.dev/icons/）から選ぶ。
+ *
+ * 見出し内の "\u200B"（ゼロ幅スペース）は、スマホ幅で折り返す位置の指定。
+ * 該当要素には text-jp-wrap（app/globals.css）を付け、文字の途中で改行されないようにしている。
  */
 
 import {
@@ -75,7 +78,7 @@ export const heroSteps = {
     {
       number: "02",
       icon: UserCheck,
-      title: "参加者がLINEで本人確認を済ませる",
+      title: "参加者がLINEで\u200B本人確認を済ませる",
       body: "参加者自身が約1分で完了。運営者の作業はありません。",
     },
     {
@@ -99,23 +102,23 @@ export const heroSteps = {
 
 export const problem = {
   eyebrow: "PROBLEM",
-  heading: "こんなことで困っていませんか？",
+  heading: "こんなことで\u200B困っていませんか？",
   description:
     "法律で義務ではないけれど、運営として確認しておきたい。そんな場面のために。",
   items: [
     {
       icon: MessageCircleQuestion,
-      title: "「身分証を出してください」と言いづらい",
+      title: "「身分証を出してください」と\u200B言いづらい",
       body: "控えとしてコピーや撮影までお願いするのは、なおさら気が引けます。",
     },
     {
       icon: IdCard,
-      title: "身分証を忘れた参加者を断りたくない",
+      title: "身分証を忘れた参加者を\u200B断りたくない",
       body: "その場で確認できないだけで、参加をお断りするのはもったいない。",
     },
     {
       icon: Lock,
-      title: "参加者の個人情報を預かりたくない",
+      title: "参加者の個人情報を\u200B預かりたくない",
       body: "預かれば保管も漏えい対策も運営者の責任になります。",
     },
   ],
@@ -210,7 +213,7 @@ export const howItWorks = {
 
 export const privacyDesign = {
   eyebrow: "PRIVACY",
-  heading: "個人情報は、あずかりません",
+  heading: "個人情報は、\u200Bあずかりません",
   lead: "身分証や顔写真は、本人確認サービス Didit の中だけで処理されます。",
   items: [
     {
@@ -230,7 +233,7 @@ export const privacyDesign = {
     },
   ],
   statement:
-    "ふだんは、誰にも見られない。いざという時は、正式な手続きを踏めば、記録から本人を特定できる。",
+    "ふだんは、誰にも見られない。\u200Bいざという時は、\u200B正式な手続きを踏めば、\u200B記録から本人を特定できる。",
   statementNote:
     "だから参加者は安心して確認を受けられ、運営者はトラブルの抑止力を持てます。",
   disclaimer:
@@ -318,7 +321,7 @@ export const pricing = {
   heading: "料金",
   free: {
     icon: Gift,
-    title: "今なら無料でお試しいただけます。",
+    title: "今なら無料で\u200Bお試しいただけます。",
     body: "正式提供時は、受付PASSごとの料金制を予定しています。",
   },
   plan: {
@@ -361,7 +364,7 @@ export const pricing = {
 };
 
 export const cta = {
-  heading: "ほんにんPASSを試してみる",
+  heading: "ほんにんPASSを\u200B試してみる",
   description:
     "まずは公式LINEで内容をご確認ください。ご質問もLINEで受け付けています。",
 } as const;

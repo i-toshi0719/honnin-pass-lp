@@ -8,7 +8,7 @@ export default function Problem() {
           <p className="text-sm font-bold tracking-wide text-accent">
             {problem.eyebrow}
           </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-2 text-jp-wrap text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {problem.heading}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -26,7 +26,7 @@ export default function Problem() {
                   <Icon className="h-7 w-7" strokeWidth={2} aria-hidden />
                 </span>
                 <div>
-                  <p className="text-lg font-bold leading-snug text-ink">
+                  <p className="text-jp-wrap text-lg font-bold leading-snug text-ink">
                     {item.title}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">

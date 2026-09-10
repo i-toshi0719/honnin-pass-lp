@@ -26,7 +26,7 @@ export default function HeroSteps() {
               </div>
 
               <div className="min-w-0 sm:mt-4">
-                <p className="text-base font-bold text-ink sm:text-lg">
+                <p className="text-jp-wrap text-base font-bold text-ink sm:text-lg">
                   {item.title}
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-slate-600">

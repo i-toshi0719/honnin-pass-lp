@@ -12,7 +12,7 @@ export default function PrivacyDesign() {
           <p className="text-sm font-bold tracking-wide text-sky-300">
             {privacyDesign.eyebrow}
           </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-2 text-jp-wrap text-3xl font-bold tracking-tight sm:text-4xl">
             {privacyDesign.heading}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/85">
@@ -42,7 +42,7 @@ export default function PrivacyDesign() {
         </ul>
 
         <div className="mx-auto mt-16 max-w-4xl text-center sm:mt-20">
-          <p className="text-2xl font-bold leading-snug tracking-tight sm:text-4xl">
+          <p className="text-jp-wrap text-2xl font-bold leading-snug tracking-tight sm:text-4xl">
             {privacyDesign.statement}
           </p>
           <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">

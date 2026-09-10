@@ -12,7 +12,7 @@ export default function Pricing() {
           <p className="text-sm font-bold tracking-wide text-accent">
             {pricing.eyebrow}
           </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-2 text-jp-wrap text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {pricing.heading}
           </h2>
         </div>
@@ -22,7 +22,7 @@ export default function Pricing() {
             <FreeIcon className="h-7 w-7" strokeWidth={2} aria-hidden />
           </span>
           <div>
-            <p className="text-xl font-bold sm:text-2xl">{free.title}</p>
+            <p className="text-jp-wrap text-xl font-bold sm:text-2xl">{free.title}</p>
             <p className="mt-1 text-sm leading-relaxed text-white/85 sm:text-base">
               {free.body}
             </p>

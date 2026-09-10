@@ -8,7 +8,7 @@ export default function UseCases() {
           <p className="text-sm font-bold tracking-wide text-accent">
             {useCases.eyebrow}
           </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-2 text-jp-wrap text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {useCases.heading}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600">
