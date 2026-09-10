@@ -3,13 +3,13 @@ import { howItWorks } from "@/lib/site-config";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-28 bg-slate-50">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <section id="how-it-works" className="scroll-mt-28 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-2xl">
           <p className="text-sm font-bold tracking-wide text-accent">
-            HOW IT WORKS
+            {howItWorks.eyebrow}
           </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {howItWorks.heading}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -47,7 +47,7 @@ export default function HowItWorks() {
                       {step.screens.map((screen, screenIndex) => (
                         <li
                           key={screen.src}
-                          className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+                          className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4"
                         >
                           <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-soft text-xs font-bold text-accent">
                             {screenIndex + 1}

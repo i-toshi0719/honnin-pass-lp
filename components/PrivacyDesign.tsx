@@ -6,73 +6,84 @@ export default function PrivacyDesign() {
   const { provider } = privacyDesign;
 
   return (
-    <section id="personal-data" className="scroll-mt-28 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <section id="personal-data" className="scroll-mt-28 bg-navy text-white">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold tracking-wide text-accent">
+          <p className="text-sm font-bold tracking-wide text-sky-300">
             {privacyDesign.eyebrow}
           </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             {privacyDesign.heading}
           </h2>
-          <p className="mt-5 text-lg font-semibold leading-relaxed text-slate-800">
+          <p className="mt-5 text-lg leading-relaxed text-white/85">
             {privacyDesign.lead}
           </p>
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {privacyDesign.items.map((item) => (
-            <li
-              key={item.title}
-              className="rounded-2xl border border-slate-200 p-6"
-            >
-              <p className="text-base font-bold text-ink">{item.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {item.body}
-              </p>
-            </li>
-          ))}
+        <ul className="mt-12 grid gap-4 sm:grid-cols-3">
+          {privacyDesign.items.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <li
+                key={item.title}
+                className="rounded-2xl border border-white/15 bg-white/10 p-6"
+              >
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/12 text-white">
+                  <Icon className="h-7 w-7" strokeWidth={2} aria-hidden />
+                </span>
+                <p className="mt-5 text-lg font-bold">{item.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/75">
+                  {item.body}
+                </p>
+              </li>
+            );
+          })}
         </ul>
 
-        <div className="mt-8 rounded-2xl border border-accent/20 bg-accent-soft p-6 sm:p-8">
-          <p className="text-lg font-bold text-ink sm:text-xl">
-            {privacyDesign.highlight.title}
+        <div className="mx-auto mt-16 max-w-4xl text-center sm:mt-20">
+          <p className="text-2xl font-bold leading-snug tracking-tight sm:text-4xl">
+            {privacyDesign.statement}
           </p>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700 sm:text-base">
-            {privacyDesign.highlight.body}
+          <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+            {privacyDesign.statementNote}
           </p>
-          <p className="mt-5 max-w-3xl text-xs leading-relaxed text-slate-500 sm:text-sm">
-            {privacyDesign.note}
+          <p className="mt-4 text-xs leading-relaxed text-white/50 sm:text-sm">
+            {privacyDesign.disclaimer}
           </p>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-slate-200 p-6 sm:p-8">
-          <p className="text-sm font-bold text-accent">{provider.label}</p>
+        {/* ブランド規約に従い、ロゴの周囲にマーク高さ1つ分（32px）以上の余白を確保する */}
+        <div className="mt-16 flex flex-col items-center gap-6 border-t border-white/15 pt-12 sm:mt-20 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+          <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-8">
+            <a
+              href={provider.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${provider.name} 公式サイト（新しいタブで開きます）`}
+              className="inline-flex shrink-0 rounded-lg p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <Image
+                src={provider.logo}
+                alt={provider.name}
+                width={provider.logoWidth}
+                height={provider.logoHeight}
+                unoptimized
+                className="h-8 w-auto"
+              />
+            </a>
+            <p className="text-center text-sm leading-relaxed text-white/80 sm:text-left sm:text-base">
+              {provider.tagline}
+            </p>
+          </div>
 
-          {/* ブランド規約に従い、ロゴの上下左右にマーク高さ1つ分（32px）以上の余白を確保する */}
-          <a
-            href={provider.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-          >
-            <Image
-              src={provider.logo}
-              alt={provider.name}
-              width={provider.logoWidth}
-              height={provider.logoHeight}
-              unoptimized
-              className="h-8 w-auto"
-            />
-          </a>
-
-          <ul className="mt-8 flex flex-col gap-2">
-            {provider.facts.map((fact) => (
+          <ul className="flex flex-wrap justify-center gap-2 lg:justify-end">
+            {provider.badges.map((badge) => (
               <li
-                key={fact}
-                className="text-sm leading-relaxed text-slate-600 before:mr-2 before:text-accent before:content-['—']"
+                key={badge}
+                className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white/90"
               >
-                {fact}
+                {badge}
               </li>
             ))}
           </ul>
