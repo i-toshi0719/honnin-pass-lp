@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     description: seo.description,
     images: [seo.ogImage],
   },
+  verification: {
+    google: "t8o_4k99PD9VlgA0ZbEom2folO7DKv5PMPRsoMj274k",
+  },
 };
 
 /**
