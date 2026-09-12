@@ -21,7 +21,8 @@ app/
   page.tsx          LP本体（セクションを並べるだけ）
   robots.ts         /robots.txt
   sitemap.ts        /sitemap.xml
-  privacy|terms|contact/  準備中ページ
+  privacy|terms/          プライバシーポリシー・利用規約（lib/legal/）
+  contact/                お問い合わせ（準備中ページ）
 components/         セクション単位のコンポーネント
 lib/site-config.ts  文言・導線・セクション本文の集約先
 public/llms.txt     LLM向けのサービス概要
@@ -35,7 +36,8 @@ public/llms.txt     LLM向けのサービス概要
 
 - 料金は正式提供前のため「予定」の表現。確定したら `lib/site-config.ts` の `pricing` を更新する。
 - OG画像は `/og.png` を参照しているだけで実ファイルは未配置。必要になったら `public/og.png` を置く。
-- `/privacy` `/terms` `/contact` は「準備中」のプレースホルダー。
+- `/privacy` `/terms` は `lib/legal/` の文案を表示。改定時は `lib/legal/config.ts` の日付も更新する。
+- `/contact` は「準備中」のプレースホルダー。
 
 ## デプロイ
 
