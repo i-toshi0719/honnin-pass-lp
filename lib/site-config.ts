@@ -14,9 +14,6 @@ import {
   ClipboardPlus,
   EyeOff,
   Gift,
-  IdCard,
-  Lock,
-  MessageCircleQuestion,
   Moon,
   Music,
   Scale,
@@ -56,11 +53,21 @@ export const seo = {
   ogImage: "/og.png",
 } as const;
 
+export const routes = {
+  top: "/",
+  lineOfficialAccount: "/line-official-account",
+  photoSession: "/photo-session",
+} as const;
+
+/** 公式アカウント連携ページ用のCTA文言。 */
+export const CONSULT_LABEL = "LINEで導入相談する";
+
 export const navItems = [
   { label: "使い方", href: "/#how-it-works" },
   { label: "個人情報の扱い", href: "/#personal-data" },
   { label: "利用シーン", href: "/#use-cases" },
   { label: "料金", href: "/#pricing" },
+  { label: "公式アカウント連携", href: routes.lineOfficialAccount },
 ] as const;
 
 /** ヒーロー画像の直下に置く、運営者視点の3ステップ。ファーストビューで仕組みを伝える。 */
@@ -98,35 +105,6 @@ export const heroSteps = {
     title: string;
     body: string;
   }[];
-};
-
-export const problem = {
-  eyebrow: "PROBLEM",
-  heading: "こんなことで\u200B困っていませんか？",
-  description:
-    "法律で義務ではないけれど、運営として確認しておきたい。そんな場面のために。",
-  items: [
-    {
-      icon: MessageCircleQuestion,
-      title: "「身分証を出してください」と\u200B言いづらい",
-      body: "控えとしてコピーや撮影までお願いするのは、なおさら気が引けます。",
-    },
-    {
-      icon: IdCard,
-      title: "身分証を忘れた参加者を\u200B断りたくない",
-      body: "その場で確認できないだけで、参加をお断りするのはもったいない。",
-    },
-    {
-      icon: Lock,
-      title: "参加者の個人情報を\u200B預かりたくない",
-      body: "預かれば保管も漏えい対策も運営者の責任になります。",
-    },
-  ],
-} as const satisfies {
-  eyebrow: string;
-  heading: string;
-  description: string;
-  items: readonly { icon: LucideIcon; title: string; body: string }[];
 };
 
 /** 使い方セクションで表示する実際の操作画面（public/screens/ 配下） */
@@ -212,7 +190,7 @@ export const howItWorks = {
 };
 
 export const privacyDesign = {
-  eyebrow: "PRIVACY",
+  eyebrow: "個人情報の漏えいが相次ぐいま",
   heading: "個人情報は、\u200Bあずかりません",
   lead: "身分証や顔写真は、本人確認サービス Didit の中だけで処理されます。",
   items: [
@@ -285,6 +263,7 @@ export const useCases = {
       icon: Camera,
       title: "撮影会",
       body: "個室撮影など、対人トラブルを避けたい場面に",
+      href: routes.photoSession,
     },
     { icon: Wind, title: "シーシャ店舗", body: "年齢確認が必要な場面に" },
     {
@@ -312,7 +291,13 @@ export const useCases = {
   eyebrow: string;
   heading: string;
   description: string;
-  items: readonly { icon: LucideIcon; title: string; body: string }[];
+  /** href があるカードは、そのページへのリンクになる。 */
+  items: readonly {
+    icon: LucideIcon;
+    title: string;
+    body: string;
+    href?: string;
+  }[];
 };
 
 /** 料金。正式提供前のため「予定」の表現を崩さないこと。 */
@@ -368,6 +353,12 @@ export const cta = {
   description:
     "まずは公式LINEで内容をご確認ください。ご質問もLINEで受け付けています。",
 } as const;
+
+/** フッターに並べる、ターゲット別ページへのリンク。ページを増やしたらここにも足すこと。 */
+export const footerPageLinks = [
+  { label: "公式アカウント連携", href: routes.lineOfficialAccount },
+  { label: "撮影会向け", href: routes.photoSession },
+] as const;
 
 export const footerLinks = [
   { label: "プライバシーポリシー", href: "/privacy" },

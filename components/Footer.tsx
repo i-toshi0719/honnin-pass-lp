@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { legalMeta } from "@/lib/legal/config";
-import { SITE_NAME, footerLinks } from "@/lib/site-config";
+import { SITE_NAME, footerLinks, footerPageLinks } from "@/lib/site-config";
 
 export default function Footer() {
   return (
@@ -36,17 +36,36 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            {footerLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-slate-600 transition-colors hover:text-ink"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex flex-col gap-4 sm:items-end">
+            <nav
+              aria-label="ページ一覧"
+              className="flex flex-wrap gap-x-6 gap-y-2"
+            >
+              {footerPageLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-semibold text-slate-700 transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <nav
+              aria-label="規約とお問い合わせ"
+              className="flex flex-wrap gap-x-6 gap-y-2"
+            >
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-slate-600 transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
 
