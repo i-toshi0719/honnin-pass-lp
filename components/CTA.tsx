@@ -1,20 +1,31 @@
 import CtaButton from "@/components/CtaButton";
 import { cta } from "@/lib/site-config";
 
-export default function CTA() {
+type Props = {
+  heading?: string;
+  description?: string;
+  /** 省略時は CtaButton の既定の文言 */
+  label?: string;
+};
+
+export default function CTA({
+  heading = cta.heading,
+  description = cta.description,
+  label,
+}: Props) {
   return (
     <section id="cta" className="scroll-mt-28 bg-slate-50">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="rounded-3xl bg-gradient-to-br from-accent-soft to-white px-6 py-12 text-center ring-1 ring-accent/20 sm:px-12 sm:py-16">
           <h2 className="text-jp-wrap text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            {cta.heading}
+            {heading}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
-            {cta.description}
+            {description}
           </p>
 
           <div className="mt-8 flex justify-center">
-            <CtaButton size="lg" className="w-full sm:w-auto" />
+            <CtaButton label={label} size="lg" className="w-full sm:w-auto" />
           </div>
         </div>
       </div>

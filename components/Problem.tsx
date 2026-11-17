@@ -1,37 +1,53 @@
-import { problem } from "@/lib/site-config";
+import Avatar from "@/components/Avatar";
 
-export default function Problem() {
+type Props = {
+  eyebrow: string;
+  heading: string;
+  voices: readonly { text: string; who: string }[];
+};
+
+/**
+ * 課題セクション。現場の声をイラストアイコンつきの吹き出しで並べ、読まずに眺めて伝わる形にする。
+ * スマホでは左右交互のチャット風、sm 以上では段をずらしたグリッドで表示する。
+ */
+export default function Problem({ eyebrow, heading, voices }: Props) {
   return (
     <section id="problem" className="scroll-mt-28 bg-slate-50">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-        <div className="max-w-2xl">
-          <p className="text-sm font-bold tracking-wide text-accent">
-            {problem.eyebrow}
-          </p>
-          <h2 className="mt-2 text-jp-wrap text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            {problem.heading}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600">
-            {problem.description}
-          </p>
-        </div>
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-28">
+        <p className="text-sm font-bold tracking-wide text-accent">{eyebrow}</p>
+        <h2 className="mt-2 text-jp-wrap text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          {heading}
+        </h2>
 
-        <ul className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
-          {problem.items.map((item) => {
-            const Icon = item.icon;
+        <ul className="mt-8 flex flex-col gap-3 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6 lg:grid-cols-3">
+          {voices.map((voice, index) => {
+            const isRight = index % 2 === 1;
 
             return (
-              <li key={item.title} className="flex gap-4 sm:flex-col sm:gap-5">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
-                  <Icon className="h-7 w-7" strokeWidth={2} aria-hidden />
-                </span>
-                <div>
-                  <p className="text-jp-wrap text-lg font-bold leading-snug text-ink">
-                    {item.title}
+              <li
+                key={voice.text}
+                className={`flex items-start gap-2 sm:gap-3 ${
+                  isRight ? "flex-row-reverse sm:translate-y-4" : ""
+                } sm:flex-row`}
+              >
+                <Avatar index={index} />
+                <div
+                  className={`flex min-w-0 max-w-[80%] flex-col sm:max-w-none ${
+                    isRight ? "items-end" : "items-start"
+                  } sm:items-start`}
+                >
+                  <p
+                    className={`text-balance rounded-2xl px-4 py-3 text-[15px] font-bold leading-relaxed text-ink shadow-sm [word-break:auto-phrase] sm:px-5 sm:py-4 sm:text-base ${
+                      isRight
+                        ? "rounded-tr-sm bg-accent-soft ring-1 ring-accent/20 sm:rounded-tl-sm sm:rounded-tr-2xl"
+                        : "rounded-tl-sm bg-white ring-1 ring-slate-200"
+                    }`}
+                  >
+                    {voice.text}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
-                    {item.body}
-                  </p>
+                  <span className="mt-1.5 px-1 text-xs text-slate-600">
+                    {voice.who}
+                  </span>
                 </div>
               </li>
             );

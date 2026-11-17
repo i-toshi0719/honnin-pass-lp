@@ -1,4 +1,9 @@
+import Link from "next/link";
+
 import { useCases } from "@/lib/site-config";
+
+const cardClass =
+  "flex h-full items-center gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70";
 
 export default function UseCases() {
   return (
@@ -20,11 +25,11 @@ export default function UseCases() {
           {useCases.items.map((item) => {
             const Icon = item.icon;
 
-            return (
-              <li
-                key={item.title}
-                className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70"
-              >
+            // href を持つカードだけがリンクになる。
+            const href = "href" in item ? item.href : undefined;
+
+            const content = (
+              <>
                 <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
                   <Icon className="h-7 w-7" strokeWidth={2} aria-hidden />
                 </span>
@@ -33,7 +38,27 @@ export default function UseCases() {
                   <p className="mt-1 text-sm leading-relaxed text-slate-600">
                     {item.body}
                   </p>
+                  {href ? (
+                    <p className="mt-2 text-sm font-bold text-accent">
+                      詳しく見る →
+                    </p>
+                  ) : null}
                 </div>
+              </>
+            );
+
+            return (
+              <li key={item.title}>
+                {href ? (
+                  <Link
+                    href={href}
+                    className={`${cardClass} transition-shadow hover:shadow-md hover:ring-accent/40`}
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  <div className={cardClass}>{content}</div>
+                )}
               </li>
             );
           })}
