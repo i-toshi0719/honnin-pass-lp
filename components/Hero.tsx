@@ -22,6 +22,12 @@ type HandoffSide = {
   src: string;
   alt: string;
   caption: readonly string[];
+  /** sm 以上で caption の代わりに出す文言 */
+  captionWide?: readonly string[];
+  /** sm 以上でのみ、caption の下に小さく出す補足 */
+  note?: readonly string[];
+  /** スマホ画面の下端に重ねる小さなラベル（読み取り結果など） */
+  badge?: string;
 };
 
 type Props = {
@@ -212,20 +218,66 @@ function HandoffPhone({
       >
         {side.label}
       </span>
-      <PhoneMockup
-        src={side.src}
-        alt={side.alt}
-        priority
-        sizes="(min-width: 1024px) 192px, (min-width: 640px) 176px, 128px"
-        className="w-full rounded-[1.6rem] p-1.5 shadow-xl sm:rounded-[2rem] sm:p-2 [&>div]:rounded-[1.3rem] sm:[&>div]:rounded-[1.6rem]"
-      />
-      <p className="text-center text-xs font-bold leading-snug text-ink sm:text-sm">
-        {side.caption.map((line) => (
-          <span key={line} className="block">
-            {line}
+      <div className={`relative w-full ${side.badge ? "mb-2.5 sm:mb-3.5" : ""}`}>
+        <PhoneMockup
+          src={side.src}
+          alt={side.alt}
+          priority
+          sizes="(min-width: 1024px) 192px, (min-width: 640px) 176px, 128px"
+          className="w-full rounded-[1.6rem] p-1.5 shadow-xl sm:rounded-[2rem] sm:p-2 [&>div]:rounded-[1.3rem] sm:[&>div]:rounded-[1.6rem]"
+        />
+        {side.badge ? (
+          <span className="absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border border-accent/25 bg-white py-1 pl-1.5 pr-2.5 text-xs font-bold text-ink shadow-md shadow-navy/15 sm:-bottom-4 sm:gap-2 sm:py-1.5 sm:pl-2 sm:pr-4 sm:text-[15px]">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+              className="h-4 w-4 sm:h-[22px] sm:w-[22px]"
+            >
+              <circle cx="10" cy="10" r="10" className="fill-accent" />
+              <path
+                d="M5.5 10.5l3 3 6-6.5"
+                fill="none"
+                stroke="#fff"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            {side.badge}
           </span>
-        ))}
-      </p>
+        ) : null}
+      </div>
+      <div className="text-center">
+        <p
+          className={`text-xs font-bold leading-snug text-ink sm:text-sm ${
+            side.captionWide ? "sm:hidden" : ""
+          }`}
+        >
+          {side.caption.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </p>
+        {side.captionWide ? (
+          <p className="hidden text-sm font-bold leading-snug text-ink sm:block">
+            {side.captionWide.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </p>
+        ) : null}
+        {side.note ? (
+          <p className="mt-1 hidden text-xs leading-normal text-slate-600 sm:block">
+            {side.note.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 }

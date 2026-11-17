@@ -5,7 +5,7 @@ import { routes } from "@/lib/site-config";
 import type { FaqItem } from "./types";
 
 export const hero = {
-  headline: ["入場者が「誰か」分かる", "受付を、LINEだけで。"],
+  headline: ["証明された人だけの受付", "システムを、LINEで。"],
   /** スマホの最初の画面に出す短い補足（2行まで） */
   note: "お客様はLINEで本人確認してQRを表示。運営者はLINEで受付画面を作って、読み取るだけ。",
   /** PC幅で出す説明文 */
@@ -29,8 +29,12 @@ export const hero = {
       {
         label: "運営者",
         src: "/screens/qr-scan.png",
-        alt: "運営者のスマホの、QRを読み取る受付画面",
-        caption: ["LINEで作った", "受付画面で読み取る"],
+        alt: "運営者のスマホの、QRを読み取る受付画面。表示されるのは受け入れの可否だけ",
+        caption: ["分かるのは", "確認結果だけ"],
+        captionWide: ["読み取って分かるのは", "確認結果だけ"],
+        /** 実際の受付画面に出るのは、受け入れの可否（APPROVED）と読み取り時刻だけ */
+        note: ["氏名・住所・身分証は", "表示されません"],
+        badge: "受け入れOK",
       },
     ],
   },
@@ -44,7 +48,7 @@ export const beforeAfter = {
   afterLabel: "ほんにんPASS",
   rows: [
     {
-      before: "免許証を目で見て、その場で判断",
+      before: "身分証を目で見て、その場で判断",
       after: "本人確認済みのQRを読み取るだけ",
     },
     {
