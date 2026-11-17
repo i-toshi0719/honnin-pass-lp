@@ -1,3 +1,4 @@
+import BeforeAfter from "@/components/BeforeAfter";
 import CTA from "@/components/CTA";
 import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
@@ -8,7 +9,13 @@ import PrivacyDesign from "@/components/PrivacyDesign";
 import Problem from "@/components/Problem";
 import TwoWays from "@/components/TwoWays";
 import UseCases from "@/components/UseCases";
-import { faq, hero, problem, twoWays } from "@/lib/content/top";
+import {
+  beforeAfter,
+  faq,
+  hero,
+  problem,
+  twoWays,
+} from "@/lib/content/top";
 
 export default function Home() {
   return (
@@ -16,6 +23,7 @@ export default function Home() {
       <Hero {...hero}>
         <HeroSteps />
       </Hero>
+      <BeforeAfter {...beforeAfter} />
       <Problem {...problem} />
       <HowItWorks />
       <PrivacyDesign />
