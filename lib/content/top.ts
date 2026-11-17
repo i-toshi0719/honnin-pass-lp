@@ -5,25 +5,58 @@ import { routes } from "@/lib/site-config";
 import type { FaqItem } from "./types";
 
 export const hero = {
-  eyebrow: "店舗・イベントの運営者の方へ",
-  headline: ["本人確認と年齢確認を、", "LINEでシンプルに。"],
+  headline: ["入場者が「誰か」分かる", "受付を、LINEだけで。"],
   /** スマホの最初の画面に出す短い補足（2行まで） */
-  note: "参加者は事前にLINEで確認、当日はQRを見せるだけ。身分証は預かりません。",
+  note: "お客様はLINEで本人確認してQRを表示。運営者はLINEで受付画面を作って、読み取るだけ。",
   /** PC幅で出す説明文 */
   description:
-    "参加者がLINEで本人確認を済ませ、当日はQRを見せるだけ。身分証や顔写真は、運営者にもほんにんPASSにも渡りません。",
-  tags: ["専用アプリ不要", "個人情報は預からない", "今なら無料"],
+    "お客様はLINEで本人確認してQRを表示。運営者はLINEで受付画面を作って、読み取るだけ。",
+  tags: ["専用アプリ不要", "身分証は預からない", "今なら無料"],
   secondary: {
     label: "公式アカウントをお持ちの方へ",
     href: routes.lineOfficialAccount,
   },
   visual: {
-    type: "screens",
-    screens: [
-      { src: "/screens/line-menu.png", alt: "LINEのメニュー画面" },
-      { src: "/screens/pass-qr.png", alt: "本人確認済みのQRコード画面" },
+    type: "handoff",
+    arrowLabel: "読み取り",
+    sides: [
+      {
+        label: "お客様",
+        src: "/screens/pass-qr.png",
+        alt: "お客様のスマホに表示した、本人確認済みのQR",
+        caption: ["LINEで本人確認済みの", "QRを表示"],
+      },
+      {
+        label: "運営者",
+        src: "/screens/qr-scan.png",
+        alt: "運営者のスマホの、QRを読み取る受付画面",
+        caption: ["LINEで作った", "受付画面で読み取る"],
+      },
     ],
   },
+} as const;
+
+/** 入場のチェックが、これまでとどう変わるかの対比。左右の項目は同じ行同士で対応させる。 */
+export const beforeAfter = {
+  eyebrow: "BEFORE / AFTER",
+  heading: "入場のチェックは、\u200Bこう変わります。",
+  beforeLabel: "これまで",
+  afterLabel: "ほんにんPASS",
+  rows: [
+    {
+      before: "免許証を目で見て、その場で判断",
+      after: "本人確認済みのQRを読み取るだけ",
+    },
+    {
+      before: "自己申告のあいまいな会員情報",
+      after: "身分証と顔で確認済みの人だけが通る",
+    },
+    {
+      before: "身分証のコピーを預かり、保管する",
+      after: "身分証は預からない",
+    },
+  ],
+  note: "お客様も運営者も、使うのはいつものLINEだけ。専用アプリも専用の機械も要りません。",
 } as const;
 
 /**

@@ -9,10 +9,23 @@ type Visual =
       type: "screens";
       screens: readonly { src: string; alt: string }[];
     }
-  | { type: "image"; src: string; alt: string; width: number; height: number };
+  | { type: "image"; src: string; alt: string; width: number; height: number }
+  | {
+      /** お客様のスマホから運営者のスマホへ、QRを受け渡す場面を2台並べて見せる */
+      type: "handoff";
+      arrowLabel: string;
+      sides: readonly [HandoffSide, HandoffSide];
+    };
+
+type HandoffSide = {
+  label: string;
+  src: string;
+  alt: string;
+  caption: readonly string[];
+};
 
 type Props = {
-  eyebrow: string;
+  eyebrow?: string;
   headline: readonly string[];
   /** スマホの最初の画面に出す短い補足 */
   note: string;
@@ -49,10 +62,12 @@ export default function Hero({
     <section className="border-b border-slate-100 bg-gradient-to-b from-accent-soft to-white">
       <div className="mx-auto grid max-w-6xl gap-x-16 gap-y-4 px-5 py-5 sm:gap-y-6 sm:px-6 sm:py-14 lg:grid-cols-2 lg:py-20">
         <div className="lg:col-start-1 lg:row-start-1 lg:self-end">
-          <p className="text-[13px] font-bold text-accent sm:text-sm">
-            {eyebrow}
-          </p>
-          <h1 className="mt-2 text-[28px] font-bold leading-[1.35] tracking-tight text-ink sm:mt-4 sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-[1.3]">
+          {eyebrow ? (
+            <p className="mb-2 text-[13px] font-bold text-accent sm:mb-4 sm:text-sm">
+              {eyebrow}
+            </p>
+          ) : null}
+          <h1 className="text-[28px] font-bold leading-[1.35] tracking-tight text-ink sm:mt-4 sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-[1.3]">
             {headline.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -62,7 +77,9 @@ export default function Hero({
         </div>
 
         <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
-          {visual.type === "screens" ? (
+          {visual.type === "handoff" ? (
+            <Handoff {...visual} />
+          ) : visual.type === "screens" ? (
             <div className="flex h-[280px] items-start justify-center gap-3.5 overflow-hidden rounded-3xl bg-accent/10 sm:h-[360px] sm:gap-6 lg:h-auto lg:overflow-visible lg:px-6 lg:pb-14 lg:pt-6">
               {visual.screens.map((screen, index) => (
                 <PhoneMockup
@@ -139,5 +156,76 @@ export default function Hero({
         </div>
       ) : null}
     </section>
+  );
+}
+
+/** お客様（本人確認済みのQR）→ 運営者（受付画面）を、矢印でつないで見せる。 */
+function Handoff({
+  arrowLabel,
+  sides,
+}: {
+  arrowLabel: string;
+  sides: readonly [HandoffSide, HandoffSide];
+}) {
+  const [from, to] = sides;
+
+  return (
+    <div className="flex items-center justify-center gap-1.5 rounded-3xl bg-white px-2.5 pb-3.5 pt-4 shadow-sm ring-1 ring-slate-200/70 sm:gap-4 sm:px-6 sm:py-8 lg:shadow-xl lg:shadow-navy/10">
+      <HandoffPhone side={from} tone="light" />
+
+      <div className="mb-8 flex w-11 shrink-0 flex-col items-center gap-1 sm:w-16">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 56 28"
+          className="h-6 w-10 text-accent sm:h-7 sm:w-14"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 14h46M42 6l8 8-8 8" />
+        </svg>
+        <span className="text-[11px] font-bold text-accent sm:text-[13px]">
+          {arrowLabel}
+        </span>
+      </div>
+
+      <HandoffPhone side={to} tone="dark" />
+    </div>
+  );
+}
+
+function HandoffPhone({
+  side,
+  tone,
+}: {
+  side: HandoffSide;
+  tone: "light" | "dark";
+}) {
+  return (
+    <div className="flex w-32 shrink-0 flex-col items-center gap-2 sm:w-44 sm:gap-3 lg:w-48">
+      <span
+        className={`rounded-full px-3 py-0.5 text-xs font-bold sm:px-4 sm:py-1 sm:text-sm ${
+          tone === "dark" ? "bg-navy text-white" : "bg-accent-soft text-accent"
+        }`}
+      >
+        {side.label}
+      </span>
+      <PhoneMockup
+        src={side.src}
+        alt={side.alt}
+        priority
+        sizes="(min-width: 1024px) 192px, (min-width: 640px) 176px, 128px"
+        className="w-full rounded-[1.6rem] p-1.5 shadow-xl sm:rounded-[2rem] sm:p-2 [&>div]:rounded-[1.3rem] sm:[&>div]:rounded-[1.6rem]"
+      />
+      <p className="text-center text-xs font-bold leading-snug text-ink sm:text-sm">
+        {side.caption.map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
+      </p>
+    </div>
   );
 }
